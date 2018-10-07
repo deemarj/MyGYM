@@ -43,7 +43,14 @@ class AdminWeeklyScheduleViewController: UIViewController,  UITableViewDelegate,
     }
     
     @IBAction func addClassPressed(_ sender: Any) {
-       addClass()
+        //newwwwwww------------------------------------
+        if (self.classTime.text?.isEmpty)! || (self.className.text?.isEmpty)!
+        {
+            lableMessage.text = "Class is not Added! fill the required information"
+        } //end newwwwwwwww--------------------------
+        
+        else {
+            addClass() }
     }
     
     override func viewDidLoad() {
@@ -84,6 +91,8 @@ class AdminWeeklyScheduleViewController: UIViewController,  UITableViewDelegate,
                        "className": className.text! as String,
                        "classDate": classTime.text! as String]
         classesRef.child(classID!).setValue(class1)
+        
+      
         lableMessage.text = "Class Added!"
     }
 
