@@ -10,8 +10,9 @@ import UIKit
 
 class MembelScheduleTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var className: UILabel!
-    @IBOutlet weak var classTime: UILabel!
+    @IBOutlet weak var classNameLable: UILabel!
+    
+    @IBOutlet weak var classTimeLable: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

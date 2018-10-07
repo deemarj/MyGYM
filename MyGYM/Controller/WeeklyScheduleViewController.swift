@@ -12,19 +12,21 @@ import Firebase
 class WeeklyScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     //new
-    
-    @IBOutlet weak var weeklyScheduleTable: UITableView!
-    
     var refClasses: DatabaseReference!
     
-    var classList = [ClassModel]()
+
+    @IBOutlet weak var weeklyScheduleTable: UITableView!
     
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+    
+    
+        var classList = [ClassModel]()
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return classList.count
     }
     
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         //creating a cell using the custom class
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MembelScheduleTableViewCell
         
@@ -35,8 +37,9 @@ class WeeklyScheduleViewController: UIViewController, UITableViewDelegate, UITab
         class1 = classList[indexPath.row]
         
         //adding values to labels
-        cell.className.text = class1.name
-        cell.classTime.text = class1.time
+       
+        cell.classNameLable.text = class1.name
+        cell.classTimeLable.text = class1.time
         
         //returning cell
         return cell
@@ -63,14 +66,14 @@ class WeeklyScheduleViewController: UIViewController, UITableViewDelegate, UITab
                     //getting values
                     let classtObject = classes.value as? [String: AnyObject]
                     let classId  = classtObject?["id"]
-                    let className  = classtObject?["classtName"]
+                    let className  = classtObject?["className"]
                     let classTime  = classtObject?["classDate"]
                     
                     //creating artist object with model and fetched values
-                    let class1 = ClassModel(id: classId as! String?, name: className as! String?, time: classTime as! String?)
+                    let Class = ClassModel(id: classId as! String?, name: className as! String?, time: classTime as! String?)
                     
                     //appending it to list
-                    self.classList.append(class1)
+                    self.classList.append(Class)
                 }
                 
                 //reloading the tableview
