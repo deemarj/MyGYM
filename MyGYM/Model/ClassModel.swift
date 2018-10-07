@@ -16,6 +16,6 @@ class ClassModel {
         self.id = id;
         self.name = name;
         self.time = time;
-        //  self.capacity = capacity;
+        //  self.capacity = capacity; // remove capacity
     }
 }
