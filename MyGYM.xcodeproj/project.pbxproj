@@ -14,6 +14,7 @@
 		0494D50F215D1B0C00CB7DD1 /* AdminWeeklyScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494D50E215D1B0C00CB7DD1 /* AdminWeeklyScheduleTableViewCell.swift */; };
 		0494D511215D1CB200CB7DD1 /* ClassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494D510215D1CB200CB7DD1 /* ClassModel.swift */; };
 		3E3938AE54529F652123A2CF /* Pods_MyGYM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3F96EA5D255047F9494DB5B /* Pods_MyGYM.framework */; };
+		5666E2A8216BA34B00A1EA9D /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5666E2A7216BA34B00A1EA9D /* EditProfileViewController.swift */; };
 		A55E58BA215B6FB4000E3090 /* TrainerHomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E58B9215B6FB4000E3090 /* TrainerHomePageViewController.swift */; };
 		A55E58BC215B6FD4000E3090 /* AdmonHomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E58BB215B6FD4000E3090 /* AdmonHomePageViewController.swift */; };
 		E8440CCC215EA74A00022C6D /* AdminManageAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8440CCB215EA74A00022C6D /* AdminManageAccountsViewController.swift */; };
@@ -44,6 +45,7 @@
 		0494D50C215CA97B00CB7DD1 /* AdminWeeklyScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminWeeklyScheduleViewController.swift; sourceTree = "<group>"; };
 		0494D50E215D1B0C00CB7DD1 /* AdminWeeklyScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminWeeklyScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		0494D510215D1CB200CB7DD1 /* ClassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ClassModel.swift; path = MyGYM/Model/ClassModel.swift; sourceTree = SOURCE_ROOT; };
+		5666E2A7216BA34B00A1EA9D /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		A55E58B9215B6FB4000E3090 /* TrainerHomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerHomePageViewController.swift; sourceTree = "<group>"; };
 		A55E58BB215B6FD4000E3090 /* AdmonHomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmonHomePageViewController.swift; sourceTree = "<group>"; };
 		C3F96EA5D255047F9494DB5B /* Pods_MyGYM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyGYM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +176,7 @@
 				E8440CD321609D1800022C6D /* AdminDeleteUsersAccountsViewController.swift */,
 				E8440CD521609D6200022C6D /* AdminDeleteTrainerAccountViewController.swift */,
 				E8440CD721609D8800022C6D /* AdminDeleteMemberAccountViewController.swift */,
+				5666E2A7216BA34B00A1EA9D /* EditProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				E8440CCC215EA74A00022C6D /* AdminManageAccountsViewController.swift in Sources */,
 				0494D511215D1CB200CB7DD1 /* ClassModel.swift in Sources */,
 				04298AEB21695AAF005D6F47 /* MembelScheduleTableViewCell.swift in Sources */,
+				5666E2A8216BA34B00A1EA9D /* EditProfileViewController.swift in Sources */,
 				E8DFC1D6215558A900AD22B0 /* LogInViewController.swift in Sources */,
 				A55E58BC215B6FD4000E3090 /* AdmonHomePageViewController.swift in Sources */,
 				E8DFC1DE2155719100AD22B0 /* AgainViewController.swift in Sources */,

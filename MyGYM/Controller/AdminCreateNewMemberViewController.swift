@@ -39,6 +39,7 @@ class AdminCreateNewMemberViewController: UIViewController {
       //  guard let password = passwordTextfield.text, !password.isEmpty else { print("Pssword is empty"); return }
       //  guard let name = nameTextfield.text, !name.isEmpty else { print("Name is empty"); return }
       //  guard let membershipId = membershipID.text, !membershipId.isEmpty else { print("Membership ID is empty"); return }
+        
         let email = emailTextfield.text
         let password = passwordTextfield.text
         let ref = Database.database().reference().root

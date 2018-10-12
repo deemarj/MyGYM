@@ -14,6 +14,7 @@ class AdminCreateNewTrainerViewController: UIViewController {
     @IBOutlet weak var nameTextfield: UITextField!
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var idTextField: UITextField!
     
     @IBOutlet weak var createdLabel: UILabel!
     
@@ -29,70 +30,52 @@ class AdminCreateNewTrainerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func createPressed(_ sender: Any) {
-        
+    @IBAction func createPressed(_ sender: Any)
+    {
         //TODO: Set up a new user on our Firbase database
-        //guard let email = emailTextfield.text, !email.isEmpty else { print("Email is empty"); return }
-        //guard let password = passwordTextfield.text, !password.isEmpty else { print("Pssword is empty"); return }
-        //guard let name = nameTextfield.text, !name.isEmpty else { print("Name is empty"); return }
+        
         let email = emailTextfield.text
         let password = passwordTextfield.text
         let name = nameTextfield.text
-        
+        let id = idTextField.text
         let ref = Database.database().reference().root
-        
-        if email != "" && password != "" && name != "" {
+        if email != "" && password != "" && name != "" && id != ""{
             Auth.auth().createUser(withEmail: email!, password: password!, completion: { (user, error) in if error != nil{
                 print(error!)
-                
                 let alertController = UIAlertController(title: "Error!", message: error?.localizedDescription, preferredStyle: .alert)
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                
                 alertController.addAction(defaultAction)
                 self.present(alertController, animated: true, completion: nil)
-                
             } else {
                 //success
                 print ("Registration Successful!")
                 let userID = Auth.auth().currentUser!.uid
-                
-                ref.child("users").child(userID).setValue(["Name": name, "Email": email, "Role": "Trainer"])
-                
-                
+                ref.child("users").child(userID).setValue(["Name": name, "Email": email, "Role": "Trainer", "ID": id])
                 self.createdLabel.text = "Trainer Created Successfully! "
                 self.createdLabel.isHidden = false
-                
                 self.nameTextfield.text = ""
                 self.emailTextfield.text = ""
+                self.idTextField.text = ""
                 self.passwordTextfield.text = ""
-                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     self.createdLabel.isHidden = true
-                
                 }
-            }
-        })
-        
+                }
+                
+            })
         } else {
             self.view.endEditing(true)
-            
             let alert = UIAlertController(
                 title: "Invalid Registration!",
                 message: "Please fill in all fields",
                 preferredStyle: UIAlertControllerStyle.alert)
-            
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
                 // do something when user press OK button, like deleting text in both fields or do nothing
             }
-            
             alert.addAction(OKAction)
-            
             self.present(alert, animated: true, completion: nil)
             return
-            
         }
-        
-        
     }
     
     @IBAction func homeButtonPressed(_ sender: Any) {

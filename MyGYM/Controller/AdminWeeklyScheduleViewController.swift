@@ -25,6 +25,81 @@ class AdminWeeklyScheduleViewController: UIViewController,  UITableViewDelegate,
     //Array to store all classes
     var classesList = [ClassModel]()
     
+    //start new (update and delete class)-----------------------------------------------------------
+    //this function will be called when a row is selected
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //getting the selected class
+        let class1  = classesList[indexPath.row]
+        
+        //building an alert
+        let alertController = UIAlertController(title: class1.name, message: "Give new values to update ", preferredStyle: .alert)
+        
+        //the confirm action taking the inputs
+        let confirmAction = UIAlertAction(title: "Update", style: .default) { (_) in
+            
+            //getting class id
+            let id = class1.id
+            
+            //getting new values
+            let name = alertController.textFields?[0].text
+            let time = alertController.textFields?[1].text
+            
+            //calling the update method to update artist
+            self.updateClass(id: id!, name: name!, time: time!)
+        }
+        
+        //the cancel action doing nothing //delete is set insted!!!!!!!
+        let deleteAction = UIAlertAction(title: "Delete", style: .default) { (_) in
+            
+            //deleting class
+            self.deleteClass(id: class1.id!)
+        }
+        
+        
+        let cancelAction = UIAlertAction(title: "Cancle", style: .cancel) { (_) in }
+        
+        //adding two textfields to alert
+        alertController.addTextField { (textField) in
+            textField.text = class1.name
+        }
+        alertController.addTextField { (textField) in
+            textField.text = class1.time
+        }
+        
+        //adding action
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        
+        //presenting dialog
+        present(alertController, animated: true, completion: nil)
+    }
+     //update class method---------------------------------------------------------------
+    func updateClass(id:String, name:String, time:String){
+        //creating artist with the new given values
+        let class1 = ["id":id,
+                      "className": name,
+                      "classTime": time
+        ]
+        
+        //updating the class using the key of the class
+        classesRef.child(id).setValue(class1)
+        
+        //displaying message
+        lableMessage.text = "Class Updated"
+    }
+     //end update class method-----------------------------------------------------------
+    //delete class method---------------------------------------------------------------
+    func deleteClass(id:String){
+        classesRef.child(id).setValue(nil)
+        
+        //displaying message
+        lableMessage.text = "Class Deleted"
+    }
+    //end delete class method---------------------------------------------------------------
+    //end new (update and delete class)--------------------------------------------------------------------
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return classesList.count
     }
@@ -43,11 +118,11 @@ class AdminWeeklyScheduleViewController: UIViewController,  UITableViewDelegate,
     }
     
     @IBAction func addClassPressed(_ sender: Any) {
-        //newwwwwww------------------------------------
+        
         if (self.classTime.text?.isEmpty)! || (self.className.text?.isEmpty)!
         {
             lableMessage.text = "Class is not Added! fill the required information"
-        } //end newwwwwwwww--------------------------
+        }
         
         else {
             addClass() }
@@ -94,6 +169,8 @@ class AdminWeeklyScheduleViewController: UIViewController,  UITableViewDelegate,
         
       
         lableMessage.text = "Class Added!"
+        className.text! = ""
+        classTime.text = ""
     }
 
     override func didReceiveMemoryWarning() {

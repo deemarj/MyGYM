@@ -25,6 +25,10 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
+	<!-- 
+<key>NSPhotoLibraryUsageDescription</key>
+	<string>Description</string>
+ -->
 	<array>
 		<string>armv7</string>
 	</array>
@@ -41,5 +45,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	
 </dict>
 </plist>

@@ -11,24 +11,41 @@ import Firebase
 
 class ProfileViewController: UIViewController {
     
+    var ref: DatabaseReference!
+
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var MembershipID: UILabel!
-    
     @IBOutlet weak var imageProfile: UIImageView!
-
-    
     @IBOutlet weak var email: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        imageProfile.image = UIImage( named: "userDefault.png")
-        name.text = "Deema Alrajeh"
-        MembershipID.text = "1234"
+        //        imageProfile.image = UIImage( named: "userDefault.png")
+//weeklyPlan.text = "Week 1: \n\n Sunday: \n Monday: \n Tuesday: \n Wednesday \n Thursday: \n Friday \n Saturday: "
 
-   //     weeklyPlan.text = "Week 1: \n\n Sunday: \n Monday: \n Tuesday: \n Wednesday \n Thursday: \n Friday \n Saturday: "
-        email.text = "Deema@gmail.com"
+            // Do any additional setup after loading the view.
+            
+            let userID = Auth.auth().currentUser?.uid
+            ref = Database.database().reference().child("users");
+            
+            ref.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let userObject = snapshot.value as? [String: AnyObject]
+                let userName  = userObject?["Name"]
+                let userEmail  = userObject?["Email"]
+                let userRole  = userObject?["Role"]
+                let userMembershipID = userObject?["MembershipID"]
+                
+                //appending it to list
+                self.name.text = userName as? String
+                self.email.text = (userEmail as! String)
+                self.MembershipID.text = (userMembershipID as! String)
+
+            })
+        
+    
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,6 +54,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func updateProfirePressed(_ sender: Any) {
+        viewDidLoad()
     }
     
     
